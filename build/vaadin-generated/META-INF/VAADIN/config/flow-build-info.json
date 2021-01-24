@@ -1,9 +1,0 @@
-{
-  "compatibilityMode": false,
-  "productionMode": false,
-  "npmFolder": "/Users/jiheejeong/newnow",
-  "generatedFolder": "/Users/jiheejeong/newnow/target/frontend",
-  "frontendFolder": "/Users/jiheejeong/newnow/frontend",
-  "pnpm.enable": false,
-  "require.home.node": false
-}
