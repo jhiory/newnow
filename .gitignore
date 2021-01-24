@@ -25,3 +25,6 @@
 
 ### log setting ###
 /logs/
+/node_modules/
+.settings
+target
