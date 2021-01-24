@@ -1,0 +1,54 @@
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--configFragment 선언-->
+<th:block th:fragment="configFragment">
+    <!-- 이 영역에 공통으로 사용할 css, js library를 선언한다. -->
+<!--    <link rel="stylesheet" th:href="@{/css/common/common.css}" >-->
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="common/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="common/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="common/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="common/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="common/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="common/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="common/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="common/css/style.css" type="text/css">
+<!--    <link rel="stylesheet" th:href="@{common/css/metroAlert.css}" >-->
+    <link rel="stylesheet" th:href="@{common/metroAlert/metroAlert.css}" >
+<!--    <script th:src="@{/common/metroAlert/metroAlert.css}"></script>-->
+
+
+
+    <!-- Js Plugins -->
+    <script src="common/js/jquery-1.7.2.min.js"></script>
+    <script src="common/js/jquery-3.3.1.min.js"></script>
+    <script src="common/js/bootstrap.min.js"></script>
+    <script src="common/js/jquery.magnific-popup.min.js"></script>
+    <script src="common/js/mixitup.min.js"></script>
+    <script src="common/js/jquery-ui.min.js"></script>
+    <script src="common/js/jquery.nice-select.min.js"></script>
+    <script src="common/js/jquery.slicknav.js"></script>
+    <script src="common/js/owl.carousel.min.js"></script>
+    <script src="common/js/jquery.richtext.min.js"></script>
+    <script src="common/js/image-uploader.min.js"></script>
+    <script src="common/js/main.js"></script>
+    <script th:src="@{/common/js/Common.js}"></script>
+    <script th:src="@{/common/js/Json.js}"></script>
+    <script th:src="@{/common/js/dhtmlx_min.js}"></script>
+<!--    <script th:src="@{/common/metroAlert/metroAlert.js}"></script>-->
+
+
+
+
+
+    <!-- Content Page의 CSS fragment 삽입 -->
+    <th:block layout:fragment="css"></th:block>
+
+    <!-- Content Page의 script fragment 삽입 -->
+    <th:block layout:fragment="script"></th:block>
+
+</th:block>
+</html>

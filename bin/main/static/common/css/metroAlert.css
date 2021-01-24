@@ -1,0 +1,637 @@
+/**
+*
+* jQuery Metro Alert
+* URL: http://www.codecanyon.net/user/bamdaa
+* Version: 1.1
+* Author: BamDaa
+* Author URL: http://www.codecanyon.net/user/bamdaa
+*
+*/
+
+/* === Back Shade === */
+.bmd-alert-shade{
+/* 	display: none; */
+	left: 0;
+	top: 0;
+	position: fixed;
+	z-index: 119515;
+	background: rgba(0,0,0, 0.3);
+	opacity:0;
+	transition: all .6s;
+	right: 0;
+	bottom: 0;
+}
+.bmd-alert-shade.is-active{opacity:1;}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert{ 	
+/* 	display: none; */
+/* 	left: 0; */
+/* 	top: 0; */
+/* 	position: fixed; */
+	background: #fff;
+/* 	width: 100%; */
+	z-index: 304315;
+}
+
+/* === Notification Back === */
+.bmd-alert-notify{ 	
+	display: block;
+	position: fixed;
+	z-index: 304315;
+}
+
+.bmd-alert-message{
+	display: none;
+	width: 250px;	
+	background: #d35400;
+	color: #ecf0f1;
+	border: 3px solid #e67e22;
+	margin-top: 0;
+	margin-bottom: 2px;
+	clear: both;
+}
+
+.bmd-alert-notify.br > .bmd-alert-message,
+.bmd-alert-notify.bc > .bmd-alert-message,
+.bmd-alert-notify.bl > .bmd-alert-message{
+	margin-top: 2px;
+	margin-bottom: 0;	
+}
+
+.bmd-alert-notify.tc > .bmd-alert-message,
+.bmd-alert-notify.bc > .bmd-alert-message,
+.bmd-alert-notify.cc > .bmd-alert-message{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bmd-alert-notify.br > .bmd-alert-message,
+.bmd-alert-notify.tr > .bmd-alert-message{
+	float: right;
+}
+
+.bmd-alert-notify.bl > .bmd-alert-message,
+.bmd-alert-notify.tl > .bmd-alert-message{
+	float: left;
+}
+
+
+/* === Wrapper === */
+.bmd-alert-wrap{ 	
+	width: 800px;
+	margin: 0 auto;	
+	display: block;
+	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+/* === Wrapper for Responsive === */
+@media (max-width: 992px){
+	.bmd-alert-wrap{ width: 100% }
+}	
+
+
+/* === Title === */
+.bmd-alert-title{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;
+	margin: 0;
+	text-align: left;
+}
+
+/* === Wrapper in Notification Message === */
+.bmd-alert-message .bmd-alert-wrap{	
+	width: 100%;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message .bmd-alert-title{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+
+.bmd-alert-content{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: left;
+}
+
+.bmd-alert-content iframe,
+.bmd-alert-content object,
+.bmd-alert-content embed{
+	vertical-align: top;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message .bmd-alert-content{
+	text-align: left;
+}
+
+
+/* === Prompt input Container === */
+.bmd-alert-input{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-input input{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	width: 100%;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;
+	width: 100%; 
+	display: block;
+	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+/* === Buttons container === */
+.bmd-alert-foot{
+	margin-top: 20px;
+	text-align: right;
+	display: block;
+}
+
+
+/* === Buttons === */
+.bmd-alert-foot button{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding:3px 12px 5px 12px;
+	border: 0;
+	background: #d35400;
+	color: #fff;
+	margin: 0 0 0 2px;
+}
+
+/* === Custom buttons === */
+.bmd-custom-button{
+	
+}
+
+/* === Back Shade === */
+.bmd-alert-shade.greensea
+{
+	background: rgba(0, 0, 0, 0.5);
+}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert.greensea
+{
+	background: #16a085;
+	color: #ecf0f1;	
+}
+
+/* === Notification Back === */
+.bmd-alert-message.greensea
+{
+	background: #16a085;
+	color: #ecf0f1;
+	border: 3px solid rgba(255,255,255,0.1);
+}
+
+/* === Title === */
+.bmd-alert-alert.greensea .bmd-alert-title
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;	
+	margin: 0;
+	text-align: center;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message.greensea .bmd-alert-title
+{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+.bmd-alert-alert.greensea .bmd-alert-content,
+.bmd-alert-message.greensea .bmd-alert-content
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message.greensea .bmd-alert-content
+{
+	text-align: left;
+}
+
+/* === Prompt input Container === */
+.bmd-alert-alert.greensea .bmd-alert-input
+{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-alert.greensea .bmd-alert-input input
+{
+	font-family:"애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;	
+}
+
+/* === Buttons container === */
+.bmd-alert-alert.greensea .bmd-alert-foot
+{
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* === Buttons === */
+.bmd-alert-alert.greensea .bmd-alert-foot button
+{
+	background: #ecf0f1;
+	color: #16a085;
+}
+
+/* === Custom buttons === */
+.bmd-alert-alert.greensea .bmd-custom-button
+{
+
+}
+
+/* === Back Shade === */
+.bmd-alert-shade.midnight
+{
+	background: rgba(44, 62, 80, 0.5);
+}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert.midnight
+{
+	background: #2c3e50;
+	color: #ecf0f1;	
+}
+
+/* === Notification Back === */
+.bmd-alert-message.midnight
+{
+	background: #2c3e50;
+	color: #fff;
+	border: 3px solid #34495e;
+}
+
+/* === Title === */
+.bmd-alert-alert.midnight .bmd-alert-title
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;	
+	margin: 0;
+	text-align: center;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message.midnight .bmd-alert-title
+{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+.bmd-alert-alert.midnight .bmd-alert-content,
+.bmd-alert-message.midnight .bmd-alert-content
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message.midnight .bmd-alert-content
+{
+	text-align: left;
+}
+
+/* === Prompt input Container === */
+.bmd-alert-alert.midnight .bmd-alert-input
+{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-alert.midnight .bmd-alert-input input
+{
+	font-family:"애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;	
+}
+
+/* === Buttons container === */
+.bmd-alert-alert.midnight .bmd-alert-foot
+{
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* === Buttons === */
+.bmd-alert-alert.midnight .bmd-alert-foot button
+{
+	background: #ecf0f1;
+	color: #2c3e50;
+}
+
+/* === Custom buttons === */
+.bmd-alert-alert.midnight .bmd-custom-button
+{
+
+}
+
+/* === Back Shade === */
+.bmd-alert-shade.pumpkin
+{
+	background: rgba(0, 0, 0, 0.5);
+}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert.pumpkin
+{
+	background: #d35400;
+	color: #ecf0f1;	
+}
+
+/* === Notification Back === */
+.bmd-alert-message.pumpkin
+{
+	background: #d35400;
+	color: #ecf0f1;
+	border: 3px solid #e67e22;
+}
+
+/* === Title === */
+.bmd-alert-alert.pumpkin .bmd-alert-title
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;	
+	margin: 0;
+	text-align: center;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message.pumpkin .bmd-alert-title
+{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+.bmd-alert-alert.pumpkin .bmd-alert-content,
+.bmd-alert-message.pumpkin .bmd-alert-content
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message.pumpkin .bmd-alert-content
+{
+	text-align: left;
+}
+
+/* === Prompt input Container === */
+.bmd-alert-alert.pumpkin .bmd-alert-input
+{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-alert.pumpkin .bmd-alert-input input
+{
+	font-family:"애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;	
+}
+
+/* === Buttons container === */
+.bmd-alert-alert.pumpkin .bmd-alert-foot
+{
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* === Buttons === */
+.bmd-alert-alert.pumpkin .bmd-alert-foot button
+{
+	background: #ecf0f1;
+	color: #d35400;
+}
+
+/* === Custom buttons === */
+.bmd-alert-alert.pumpkin .bmd-custom-button
+{
+
+}
+
+/* === Back Shade === */
+.bmd-alert-shade.sky
+{
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert.sky
+{
+	background: #3498db;
+	color: #ecf0f1;
+}
+
+/* === Notification Back === */
+.bmd-alert-message.sky
+{
+	background: #3498db;
+	color: #ecf0f1;
+	border: 3px solid rgba(255,255,255,0.1);
+}
+
+/* === Title === */
+.bmd-alert-alert.sky .bmd-alert-title
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;	
+	margin: 0;
+	text-align: center;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message.sky .bmd-alert-title
+{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+.bmd-alert-alert.sky .bmd-alert-content,
+.bmd-alert-message.sky .bmd-alert-content
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message.sky .bmd-alert-content
+{
+	text-align: left;
+}
+
+/* === Prompt input Container === */
+.bmd-alert-alert.sky .bmd-alert-input
+{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-alert.sky .bmd-alert-input input
+{
+	font-family:"애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;	
+}
+
+/* === Buttons container === */
+.bmd-alert-alert.sky .bmd-alert-foot
+{
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* === Buttons === */
+.bmd-alert-alert.sky .bmd-alert-foot button
+{
+	background: #ecf0f1;
+	color: #3498db;
+}
+
+/* === Custom buttons === */
+.bmd-alert-alert.sky .bmd-custom-button
+{
+
+}
+
+/* === Back Shade === */
+.bmd-alert-shade.blood
+{
+	background: rgba(0, 0, 0, 0.5);
+}
+
+/* === Alert, Confirm, Prompt Back === */
+.bmd-alert-alert.blood
+{
+	background: #cb1414;
+	color: #ecf0f1;	
+}
+
+/* === Notification Back === */
+.bmd-alert-message.blood
+{
+	background: #cb1414;
+	color: #ecf0f1;
+	border: 3px solid rgba(255,255,255,0.1);
+}
+
+/* === Title === */
+.bmd-alert-alert.blood .bmd-alert-title
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 22px;	
+	margin: 0;
+	text-align: center;
+}
+
+/* === Title in Notification Message === */
+.bmd-alert-message.blood .bmd-alert-title
+{
+	line-height: 1em;
+	text-align: left;
+}
+
+/* === Message Container === */
+.bmd-alert-alert.blood .bmd-alert-content,
+.bmd-alert-message.blood .bmd-alert-content
+{
+	font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* === Message Container in Notification Message === */
+.bmd-alert-message.blood .bmd-alert-content
+{
+	text-align: left;
+}
+
+/* === Prompt input Container === */
+.bmd-alert-alert.blood .bmd-alert-input
+{
+	margin: 10px 0 0;
+}
+
+/* === Prompt input === */
+.bmd-alert-alert.blood .bmd-alert-input input
+{
+	font-family:"애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+	font-size:12px;
+	color: #444;
+	border: 1px solid #ddd ;
+	box-shadow: 0 0 5px 0 #ddd inset; 
+	background: #fff;
+	padding: 7px;	
+}
+
+/* === Buttons container === */
+.bmd-alert-alert.blood .bmd-alert-foot
+{
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* === Buttons === */
+.bmd-alert-alert.blood .bmd-alert-foot button
+{
+	background: #ecf0f1;
+	color: #cb1414;
+}
+
+/* === Custom buttons === */
+.bmd-alert-alert.blood .bmd-custom-button
+{
+
+}
+/* 사파리 */
+@media not all and (min-resolution:.001dpcm) { @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+	.bmd-alert-foot button {
+		font-weight: normal;
+		padding: 5px 12px 3px 12px;
+	}
+}}

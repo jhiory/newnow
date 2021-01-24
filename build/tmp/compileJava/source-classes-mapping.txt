@@ -1,12 +1,12 @@
+doit/now/config/WebSecurityConfig.java
+ doit.now.config.WebSecurityConfig
 doit/now/main/web/NowMainController.java
  doit.now.main.web.NowMainController
+doit/now/login/web/LoginController.java
+ doit.now.login.web.LoginController
 doit/now/NowApplication.java
  doit.now.NowApplication
 doit/now/exBoard/web/ExBoardController.java
  doit.now.exBoard.web.ExBoardController
 doit/now/config/SwaggerConfig.java
  doit.now.config.SwaggerConfig
-doit/now/login/web/LoginController.java
- doit.now.login.web.LoginController
-doit/now/config/WebSecurityConfig.java
- doit.now.config.WebSecurityConfig
