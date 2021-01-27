@@ -14,7 +14,6 @@ $.extend({	/**
             var blnIsPage	= false;							//페이징처리적용여부
 
 
-
             if(typeof(blnAsync) === "undefined" || blnAsync !== true){blnAsync = false;}
             objParams.AsyncMode = blnAsync;
             if(blnAsync === true && typeof(strCallBackFunc) !== "undefined"){
@@ -23,40 +22,31 @@ $.extend({	/**
 
             //로딩바 생성
             if(blnAsync === true){
-                if(blnIsGrid === true){$("#" + strGridId).showGridProgressBar();}
-                else{$.showDocProgressBar();}
+               $.showDocProgressBar();
             }
 
-            var strURL = "/api/" + objParams.getService() + "/" + objParams.getMethod();
+            var strURL = "/api/" + objParams.Service ;
             strURL = strURL.replace(/(\/\/)|[\.]/g, "/");
-            objParams.setCallType("BIZ_SERVICE");
-            objParams.setURL(strURL);
+            objParams.CallType = "BIZ_SERVICE";
+            objParams.URL =strURL;
 
-            //Grid 정보를 설정할 경우
-            if(blnIsGrid === true && (blnIsPage === true || blnIsScrollAppend === true)){
-                objParams.setRowCnt($("#" + strGridId).getRowCntPerPage());
-                if(objParams.getPages() == undefined || objParams.getPages() == 0){
-                    objParams.setPages(1);
-                }
-            }
+
             //파라메터다이제스트 생성
-            objParams.replaceXSSTextForRequest();
-            var arrayDataInfo = $.getKeyListDataList(objParams);
-            objParams.setHeaderKey("MD_KEY_LIST", arrayDataInfo[0]);
-            objParams.setHeaderKey("MD_DATA_LIST", Hash.encryptMD5(arrayDataInfo[1]));
+            // objParams.replaceXSSTextForRequest();
+            // var arrayDataInfo = $.getKeyListDataList(objParams);
+            // objParams.setHeaderKey("MD_KEY_LIST", arrayDataInfo[0]);
+            // objParams.setHeaderKey("MD_DATA_LIST", Hash.encryptMD5(arrayDataInfo[1]));
 
             $.ajax({
                 type:"POST",
 //				contentType: "application/json",
-                url: objParams.getURL(),
-                data: objParams.getJsonObj(),
+                url: objParams.URL,
+                data: objParams,
                 dataType:"json",
                 async: blnAsync,
                 beforeSend :function(xhr){
                     //X-CSRF-TOKEN
-
-                    xhr.setRequestHeader($("meta[name='_csrf_header']").attr('content'), $("meta[name='_csrf']").attr('content'));
-
+                    // xhr.setRequestHeader($("meta[name='_csrf_header']").attr('content'), $("meta[name='_csrf']").attr('content'));
                     /*
                     if($("meta[name='_csrf']").attr('content') == undefined){
                         xhr.setRequestHeader("1", "1");
@@ -70,8 +60,7 @@ $.extend({	/**
 
                     //로딩바 제거
                     if(blnAsync === true){
-                        if(blnIsGrid === true){$("#" + strGridId).showGridProgressBar(false);}
-                        else{$.showDocProgressBar(false);}
+                        $.showDocProgressBar(false);
                     }
 
                     if(obj !=  null){

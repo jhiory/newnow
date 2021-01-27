@@ -24,6 +24,7 @@ var exBorad = {
      * InitPage Function : 화면이 초기 로드 시점에 처리할 사항을 정의한다.
      ********************************************************************************/
     initPage: function () {
+        $.showDocProgressBar();
         //그리드 디자인
         this.defineGrid();
         //레이어 폼 화면 디자인
@@ -77,6 +78,6 @@ var exBorad = {
     },
     //
     SendSave:function () {
-        
+
     }
 }
