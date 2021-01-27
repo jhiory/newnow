@@ -211,7 +211,8 @@ ol {
   top: 0;
   left: 0;
   z-index: 999999;
-  background: #000;
+  background: rgba(195, 71, 233, 0.3);
+
 }
 
 .loader {
@@ -264,6 +265,139 @@ ol {
     border-left-color: transparent;
   }
 }
+/* .tt-loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999999;
+    background: rgba(237, 237, 237, 0.5);
+    opacity: 1 !important
+}
+
+.tt-loader span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    background: transparent;
+    border-top: 4px solid #3b409a;
+    border-right: 4px solid transparent;
+    border-radius: 50%;
+    -webkit-animation: 1s loader linear infinite;
+    animation: 1s loader linear infinite
+}
+
+@-webkit-keyframes loader {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes loader {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+.tt-progress-bar {
+    color: #3b409a;
+    margin: 0 auto;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: progressbar 1s infinite ease-in-out;
+    animation: progressbar 1s infinite ease-in-out;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s
+}
+
+.tt-progress-bar,
+.tt-progress-bar:before,
+.tt-progress-bar:after {
+    background: #3b409a;
+    width: 8px;
+    height: 30px
+}
+
+.tt-progress-bar:before,
+.tt-progress-bar:after {
+    position: absolute;
+    top: 0;
+    content: ''
+}
+
+.tt-progress-bar:before {
+    left: -15px;
+    -webkit-animation: progressbar 1s infinite ease-in-out;
+    animation: progressbar 1s infinite ease-in-out;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s
+}
+
+.tt-progress-bar:after {
+    left: 15px;
+    -webkit-animation: progressbar 1s infinite ease-in-out;
+    animation: progressbar 1s infinite ease-in-out
+}
+
+.tt-progress-bar span {
+    position: absolute;
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: #666
+}
+
+@-webkit-keyframes progressbar {
+
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 30px
+    }
+
+    40% {
+        box-shadow: 0 -15px;
+        height: 40px
+    }
+}
+
+@keyframes progressbar {
+
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 30px
+    }
+
+    40% {
+        box-shadow: 0 -15px;
+        height: 40px
+    }
+} */
 /*---------------------
   Header
 -----------------------*/
