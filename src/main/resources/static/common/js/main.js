@@ -16,9 +16,9 @@
     --------------------*/
     $(window).on('load', function () {
         // $(".loader").fadeOut();
-        $("#preloder").fadeOut();
+        //$("#preloder").fadeOut();
         // $("#preloder").delay(200).fadeOut("slow");
-
+        $.showDocProgressBar(false);
         /*------------------
             Property filter
         --------------------*/

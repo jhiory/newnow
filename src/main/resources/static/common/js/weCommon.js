@@ -7,7 +7,7 @@ $.extend({	/**
      * @return 동기처리방식일 경우 WebJson 구조의 반환데이터, 비동기처리방식일 경우 내부적으로 strCallBackFunc을 호출하여 자동으로 반환
      */
     callService:function(objParams, blnAsync, strCallBackFunc) {
-        gintRequestCnt++;
+        //gintRequestCnt++;
 
         var objJsonReturn = {};
         try{
@@ -56,7 +56,7 @@ $.extend({	/**
                     */
                 },
                 success:function(obj){
-                    if(gintRequestCnt > 0){gintRequestCnt--;}
+                    //if(gintRequestCnt > 0){gintRequestCnt--;}
 
                     //로딩바 제거
                     if(blnAsync === true){
@@ -67,29 +67,11 @@ $.extend({	/**
                         if(typeof(obj.HEADER.COUNT) === "undefined"){obj.HEADER.COUNT = 0;}
                         if(typeof(obj.HEADER.TOT_COUNT) === "undefined"){obj.HEADER.TOT_COUNT = 0;}
 
-                        objJsonReturn.setJsonObj(obj);
+                        objJsonReturn.JsonObj=obj;
 
-                        //악의적인 XSS 공격에 대비한 결과데이터 태그정보 치환
-                        objJsonReturn.replaceXSSText();
 
                         if(blnAsync === true && typeof(strCallBackFunc) === "function"){
-                            objJsonReturn.setCallBack(strCallBackFunc);
-                        }
-
-                        //위변조에 따른 페이지 강제이동
-                        if(objJsonReturn.getHeaderKey("MD_CHECK_FAIL") == "true") { $.goMDFailPage(); return; }
-                        //세션정보 소멸에 따른 페이지 강제이동
-                        if(objJsonReturn.getHeaderKey("EXPIRE_SESSION") == "true") { $.goExpirePage("TWB"); return; }
-
-                        var strSqlNameSpace = objJsonReturn.getHeaderKey("TWB_SQL_NAME_SPACE");
-                        var strSqlId = objJsonReturn.getHeaderKey("TWB_SQL_ID");
-
-                        //
-                        if(typeof(strSqlNameSpace) !== "undefined" && strSqlNameSpace !== ""){
-                            objParams.setHeaderKey("TWB_SQL_NAME_SPACE", strSqlNameSpace);
-                        }
-                        if(typeof(strSqlId) !== "undefined" && strSqlId !== ""){
-                            objParams.setHeaderKey("TWB_SQL_ID", strSqlId);
+                            objJsonReturn.CallBack(strCallBackFunc);
                         }
 
                     }else{
@@ -181,7 +163,7 @@ $.extend({	/**
             });
         } catch(e){
 
-            if(gintRequestCnt > 0){gintRequestCnt--;}
+            // if(gintRequestCnt > 0){gintRequestCnt--;}
 
             //로딩바 제거
             if(blnAsync === true){
@@ -214,5 +196,24 @@ $.extend({	/**
         }
 
         return objJsonReturn;
+    },
+    showDocProgressBar:function(blnDoShow, strProcTitle){
+        if(typeof(blnDoShow) === "undefined"){blnDoShow = true;}
+        try{
+            if(!blnDoShow){
+                //if(gintRequestCnt == 0){
+                    $("#preloder").fadeOut("fast");
+                    // $(".tt-loader").fadeOut("fast");
+                    // $("body > .tt-loader").remove();
+                //}
+            }else{
+                //if(gintRequestCnt == 1){
+                    $("#preloder").fadeIn("fast");
+                    // $("body").append('<div class="tt-loader"><span></span></div>');
+                    // $(".tt-loader").fadeIn("fast");
+               // }
+            }
+        }catch(e){console.log("error=", e);}
+
     }
 })
