@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="ExBoardController", description="메인 컨트롤러")
-public class BoardController
+@Api(value="ExBoardController", description="회원등급/포인트안내")
+public class MmbLvlController
 {
 
     /**
@@ -20,11 +20,11 @@ public class BoardController
      * @return
      */
     @ApiOperation(value = "메인 페이지", notes="메인 페이지로 이동한다")
-    @GetMapping("/membership&point")
+    @GetMapping("/mmbLvl")
     public String moveTwbMain(Model model) throws Exception
     {
         log.debug("moveMain");
-        return "exBoard/membership&point";
+        return "exBoard/mmbLvl";
     }
 
 }

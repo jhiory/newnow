@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="ExBoardController", description="메인 컨트롤러")
+@Api(value="ExBoardController", description="공지사항")
 public class ExBoardController
 {
 
