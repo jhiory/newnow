@@ -9,6 +9,8 @@ var objGridData = null;
 function domReady(){
     exBorad.initPage();	//페이지 초기화 처리
     exBorad.defineEvent();	//이벤트 정의
+    console.log(12124
+    )
 };
 $(window).on("beforeunload",function(){
     //윈도우 종료전 처리
@@ -24,7 +26,7 @@ var exBorad = {
      * InitPage Function : 화면이 초기 로드 시점에 처리할 사항을 정의한다.
      ********************************************************************************/
     initPage: function () {
-        $.showDocProgressBar();
+        // $.showDocProgressBar();
         //그리드 디자인
         this.defineGrid();
         //레이어 폼 화면 디자인
@@ -40,9 +42,10 @@ var exBorad = {
      * Event Object : 화면에 디자인 된 버튼 및 오브젝트 이벤트와 호출할 함수를 정의한다.
      ********************************************************************************/
     defineEvent:function(){
+        console.log(0000);
 
-        $("#btnSave").click(function(e){indexPage.SendSave();});	//신규등록
-        $("#selectRtn").click(function(e){indexPage.selectRtn1();});	//조회버튼
+        $("#btnSave").click(function(e){exBorad.SendSave();});	//신규등록
+        $("#selectRtn").click(function(e){exBorad.selectRtn1();});	//조회버튼
 
     },
     //		-------------------------------------------------------------------------------
@@ -78,6 +81,31 @@ var exBorad = {
     },
     //
     SendSave:function () {
+    console.log(1212);
+        //검색전 데이터 초기화하기
+        $("#divGrid02").initGrid();
 
+        //파라메터정의
+        var objJsonParams = {};
+        objJsonParams.Service= "getBoardList";
+
+        console.log("selectRtn : ",objJsonParams);
+
+
+        //서비스 호출
+        var objJsonReturn = $.callService(objJsonParams);
+
+        console.log("objJsonReturn : ",objJsonReturn);
+
+        //결과값 반환
+        // if(!objJsonReturn.getErrorFlag()){
+        //     console.log("objJsonReturn: {}",objJsonReturn);
+        //
+        // } else {
+        //     TwbMsg(objJsonReturn.getMsg(), "E");
+        // }
+
+        objJsonParams = null;	//전송파라메터소멸
+        objJsonReturn = null;	//반환파라메터소멸
     }
 }

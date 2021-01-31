@@ -1,4 +1,38 @@
-
+//공통 메시지
+var TWB_MSG = {
+    FORM_NO_EXIST 			: "폼객체가 존재하지 않습니다."
+    ,EXCEPTION_01 			: "현재 시스템에 장애가 발생했습니다. 잠시후 다시 처리해 주시기 바랍니다."
+    ,FORM_ID_NO_EXIST 		: "폼객체 ID가 존재하지 않습니다."
+    ,FORM_ACTION_NO_EXIST 	: "폼객체 Action 정보가 존재하지 않습니다."
+    ,TAG_NO_EXIST 			: "태그가 존재하지 않습니다."
+    ,TAGID_NO_EXIST 		: "태그ID가 존재하지 않습니다."
+    ,TAGID_NAME_NO_EXIST 	: "태그 중에 id 또는 name\n속성이 정의되어 있지 않은 태그가 있습니다."
+    ,DATA_NOT_INPUT_01 		: "[필수항목 입력 누락]\n아래와 같이 총 "
+    ,DATA_NOT_INPUT_02 		: "건이 미입력 되었습니다.\n"
+    ,DATA_OVER_LENGTH_01 	: "\n[입력값 길이초과]\n아래와 같이 총 "
+    ,DATA_OVER_LENGTH_02 	: "건이 제한된 길이를 초과했습니다.\n"
+    ,FROM_DATE_CONFIRM 		: "시작 일자를 정확하게 입력해 주시기 바랍니다."
+    ,TO_DATE_CONFIRM 		: "종료 일자를 정확하게 입력해 주시기 바랍니다."
+    ,FROM_TO_DATE_CONFIRM 	: "시작일자가 종료일자보다 클 수 없습니다."
+    ,OVER_DAY_CONFIRM 		: "일을 초과(경과) 할 수 없습니다."
+    ,OVER_MONTH_CONFIRM		: "개월을 초과(경과) 할 수 없습니다."
+    ,WORK_GB_NO_EXIST 		: "디렉토리 구분자가 정의되어 있지 않습니다."
+    ,FILE_INFO_NO_EXIST 	: "파일정보가 존재하지 않습니다."
+    ,FILE_GROUP_KEY_NO_EXIST: "파일그룹키가 존재하지 않습니다."
+    ,FILE_KEY_NO_EXIST 		: "파일키가 존재하지 않습니다."
+    ,FILE_NAME_NO_EXIST 	: "파일명이 존재하지 않습니다."
+    ,FILE_USER_NO_EXIST 	: "파일 전송자 정보가 없습니다."
+    ,FILE_WORK_GB_NO_EXIST 	: "전송할 파일의 업무구분(WORK_GB) 정보가 없습니다."
+    ,DUPLE_KEY_DATA_EXIST	: "중복된 데이터가 존재합니다."
+    ,SELECT_OBJECT_NO_EXIST	: "선택된 항목이 존재하지 않습니다."
+    ,CHECK_OBJECT_NO_EXIST	: "체크된 항목이 존재하지 않습니다."
+    ,CHANGE_OBJECT_NO_EXIST	: "변경된 항목이 존재하지 않습니다."
+    ,DUPLE_DEFINE_OBJECT    : "항목이 중복으로 정의되었습니다."
+    ,WRONG_DATA_FORMAT		: "잘못된 입력입니다."
+    ,EMPTY_DATA_FILL		: "필수 입력 항목입니다."
+    ,TARGET_NO_EXIST		: "존재하지 않는 항목입니다."
+    ,MAX_BYTE_NO_EXIST		: "최대 입력 BYTE수가 존재하지 않습니다."
+};
 $.extend({	/**
      * 비즈니스로직을 호출하여 처리 결과를 반환 받는다.
      * @param {String} objParams WebJson 구조의 파라메터
@@ -22,7 +56,7 @@ $.extend({	/**
 
             //로딩바 생성
             if(blnAsync === true){
-               $.showDocProgressBar();
+               $.showDocProgressBar(true);
             }
 
             var strURL = "/api/" + objParams.Service ;
@@ -76,15 +110,16 @@ $.extend({	/**
 
                     }else{
 
-                        objJsonReturn = new WebJson();
-                        objJsonReturn.setHeaderKey("COUNT","0");
-                        objJsonReturn.setHeaderKey("TOT_COUNT","0");
-                        objJsonReturn.setHeaderKey("ERROR_FLAG",true);
+                        // objJsonReturn = new WebJson();
+                        // objJsonReturn.setHeaderKey("COUNT","0");
+                        // objJsonReturn.setHeaderKey("TOT_COUNT","0");
+                        // objJsonReturn.setHeaderKey("ERROR_FLAG",true);
+                        objJsonReturn.COUNT = "0";
+                        objJsonReturn.TOT_COUNT ="0"
+                        objJsonReturn.ERROR_FLAG = true ;
+                        objJsonReturn.ERROR_MSG = TWB_MSG.EXCEPTION_01;
 
-                        objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                        if(G_SVR_SVC_MODE === "DEV"){
-                            objJsonReturn.setHeaderKey("ERROR_MSG", "HEADER에  null 값이 리턴 되었습니다");
-                        }
+
                     }
 
                     //그리드가 세팅되어있으면 요청정보를 그리드 오브젝트에 세팅해준다.
