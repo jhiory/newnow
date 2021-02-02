@@ -1,4 +1,4 @@
-package doit.now.coInfo.web;
+package doit.now.community.web;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="업체정보", description="ex1")
-public class Ex1Controller
+@Api(value="커뮤니티", description="일상게시판")
+public class DlyBltBrdController
 {
 
     /**
@@ -20,11 +20,11 @@ public class Ex1Controller
      * @return
      */
     @ApiOperation(value = "메인 페이지", notes="메인 페이지로 이동한다")
-    @GetMapping("/ex1")
+    @GetMapping("/dlyBltBrd")
     public String moveTwbMain(Model model) throws Exception
     {
         log.debug("moveMain");
-        return "coInfo/ex1";
+        return "community/dlyBltBrd";
     }
 
 }
