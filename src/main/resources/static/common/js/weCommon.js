@@ -1,3 +1,5 @@
+var G_BROWSER_INFO		= getBrowserInfo("KIND"); 					//브라우저 정보
+
 //공통 메시지
 var TWB_MSG = {
     FORM_NO_EXIST 			: "폼객체가 존재하지 않습니다."
@@ -33,6 +35,35 @@ var TWB_MSG = {
     ,TARGET_NO_EXIST		: "존재하지 않는 항목입니다."
     ,MAX_BYTE_NO_EXIST		: "최대 입력 BYTE수가 존재하지 않습니다."
 };
+/*********************************************************************************************
+ ************** GLOBAL 변수 정의 종료************************************************************
+ **********************************************************************************************/
+
+//DOM객체 로드 이후에 호출되는 기본기능 정의
+if((G_BROWSER_INFO === "MSIE" && ((!isNaN(getBrowserInfo("VER")) && parseInt(getBrowserInfo("VER"), 10) >= 9) || getBrowserInfo("VER") === "EDGE")) || document.addEventListener){
+    window.addEventListener('DOMContentLoaded', function(){
+        try{
+            // G_SVR_SVC_MODE = $.getProperty("SERVICE_MODE", "DEV");
+            //마우스 우클릭
+            try{domReady();}catch(E){ console.log("domReady error=", E); }
+            //화면이 전부 로드가 완료된 후처리 로직
+            // try{winLoadComplete();}catch(E){ console.log("winLoadComplete error=", E); }
+
+        }catch(E){ console.log("domReady error=", E); }
+    });
+}else{
+    document.attachEvent("onreadystatechange", function(){
+        if (document.readyState === "complete"){
+            try{
+
+            }catch(E){console.log("error=", E);}
+            document.detachEvent("onreadystatechange", arguments.callee);
+            //
+            try{domReady();}catch(E){console.log("error=", E);}
+            try{winLoadComplete();}catch(E){console.log("error=", E);}
+        }
+    });
+}
 $.extend({	/**
      * 비즈니스로직을 호출하여 처리 결과를 반환 받는다.
      * @param {String} objParams WebJson 구조의 파라메터
@@ -252,3 +283,71 @@ $.extend({	/**
 
     }
 })
+
+/**
+ * 구분에 따라 브라우저 정보를 반환한다.
+ * @param strCase : 구분:KIND:브라우저종류, VER:버전
+ * @returns 구분에 따른 브라우저 정보
+ * @author MPC R&D Team
+ */
+function getBrowserInfo(strCase){
+    if(typeof(strCase) === "undefined"){strCase = "KIND";}
+    var strRetVal		= "";
+    var strKind			= "";
+    var strUserAgent	= new String(window.navigator.userAgent.toUpperCase());
+
+    if(strUserAgent.indexOf("CHROME") >= 0 && strUserAgent.indexOf("EDGE") < 0){
+        strKind	= "CHROME";
+    }else if(strUserAgent.indexOf("FIREFOX") >= 0){
+        strKind	= "FIREFOX";
+    }else if(strUserAgent.indexOf("OPERA") >= 0){
+        strKind	= "OPERA";
+    }else if(strUserAgent.indexOf("MSIE") >= 0 || strUserAgent.indexOf("TRIDENT") >= 0 || strUserAgent.indexOf("EDGE") >= 0){
+        strKind	= "MSIE";
+    }else if(strUserAgent.indexOf("SAFARI") >= 0 && strUserAgent.indexOf("EDGE") < 0){
+        strKind	= "SAFARI";
+    }else if(strUserAgent.indexOf("KONQUEROR") >= 0 && strUserAgent.indexOf("EDGE") < 0){
+        strKind	= "KONQUEROR";
+    }
+
+    switch (strCase){
+        case "KIND"	: strRetVal = strKind; break;
+        case "VER"	:
+            var strVersion		= "";
+            var intStartPoint	= 0;
+            //브라우저 버전
+            if(strKind === "MSIE"){
+                if(window.XMLHttpRequest == null && strUserAgent.indexOf("MSIE") >= 0){
+                    strVersion	= "6";
+                }else if(strUserAgent.indexOf("MSIE 7.0") >= 0 && strUserAgent.indexOf("TRIDENT") < 0){
+                    strVersion	= "7";
+                }else if(strUserAgent.indexOf("MSIE 8.0") >= 0 && strUserAgent.indexOf("TRIDENT") >= 0){
+                    strVersion	= "8";
+                }else if(strUserAgent.indexOf("MSIE 9.0") >= 0 && strUserAgent.indexOf("TRIDENT") >= 0){
+                    strVersion	= "9";
+                }else if(strUserAgent.indexOf("MSIE 10.0") >= 0 && strUserAgent.indexOf("TRIDENT") >= 0 && window.navigator.pointerEnabled != true){
+                    strVersion	= "10";
+                }else if(strUserAgent.indexOf("TRIDENT") >= 0 && window.navigator.pointerEnabled == true){
+                    strVersion	= "11";
+                }else if(strUserAgent.indexOf("EDGE") >= 0){
+                    strVersion	= "EDGE";
+                }
+            }else if(strKind === "FIREFOX"){
+                intStartPoint	= strUserAgent.indexOf(strKind) + 8;
+                strVersion		= strUserAgent.substring(intStartPoint);
+            }else if(strKind === "CHROME"){
+                intStartPoint	= strUserAgent.indexOf(strKind) + 7;
+                intEndPoint		= strUserAgent.indexOf(" ", intStartPoint);
+                strVersion		= strUserAgent.substring(intStartPoint, intEndPoint);
+            }else if(strKind === "SAFARI" || strKind === "KONQUEROR"){
+                intStartPoint	= strUserAgent.indexOf(strKind) + 7;
+                strVersion		= strUserAgent.substring(intStartPoint);
+            }
+            strRetVal = strVersion;
+            break;
+        default:
+            break;
+    };
+
+    return strRetVal;
+}

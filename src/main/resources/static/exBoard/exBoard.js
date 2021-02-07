@@ -9,8 +9,7 @@ var objGridData = null;
 function domReady(){
     exBorad.initPage();	//페이지 초기화 처리
     exBorad.defineEvent();	//이벤트 정의
-    console.log(12124
-    )
+    console.log(12124);
 };
 $(window).on("beforeunload",function(){
     //윈도우 종료전 처리
@@ -42,7 +41,8 @@ var exBorad = {
      * Event Object : 화면에 디자인 된 버튼 및 오브젝트 이벤트와 호출할 함수를 정의한다.
      ********************************************************************************/
     defineEvent:function(){
-        console.log(0000);
+        console.log(1212);
+        $("#tit").keyup(alert("121212"));	//신규등록
 
         $("#btnSave").click(function(e){exBorad.SendSave();});	//신규등록
         $("#selectRtn").click(function(e){exBorad.selectRtn1();});	//조회버튼
@@ -82,6 +82,7 @@ var exBorad = {
     //
     SendSave:function () {
     console.log(1212);
+    return;
         //검색전 데이터 초기화하기
         $("#divGrid02").initGrid();
 
