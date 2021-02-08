@@ -82,9 +82,8 @@ var exBorad = {
     //
     SendSave:function () {
     console.log(1212);
-    return;
-        //검색전 데이터 초기화하기
-        $("#divGrid02").initGrid();
+    // return;
+
 
         //파라메터정의
         var objJsonParams = {};

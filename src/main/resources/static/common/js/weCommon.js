@@ -75,7 +75,7 @@ $.extend({	/**
         //gintRequestCnt++;
 
         var objJsonReturn = {};
-        try{
+        // try{
             var blnIsPage	= false;							//페이징처리적용여부
 
 
@@ -111,14 +111,14 @@ $.extend({	/**
                 async: blnAsync,
                 beforeSend :function(xhr){
                     //X-CSRF-TOKEN
-                    // xhr.setRequestHeader($("meta[name='_csrf_header']").attr('content'), $("meta[name='_csrf']").attr('content'));
-                    /*
+                    xhr.setRequestHeader($("meta[name='_csrf_header']").attr('content'), $("meta[name='_csrf']").attr('content'));
+
                     if($("meta[name='_csrf']").attr('content') == undefined){
                         xhr.setRequestHeader("1", "1");
                     } else {
                         xhr.setRequestHeader($("meta[name='_csrf_header']").attr('content'), $("meta[name='_csrf']").attr('content'));
                     }
-                    */
+
                 },
                 success:function(obj){
                     //if(gintRequestCnt > 0){gintRequestCnt--;}
@@ -169,9 +169,9 @@ $.extend({	/**
                 },
                 error:function(e){
 
-                    if(gintRequestCnt > 0){gintRequestCnt--;}
+                    //if(gintRequestCnt > 0){gintRequestCnt--;}
 
-                    objJsonReturn.setJsonObj(e.responseJSON);
+                    objJsonReturn.JsonObj=e.responseJSON;
 
                     //세션정보 소멸에 따른 페이지 강제이동
                     if(objJsonReturn.isContainKey("EXPIRE_SESSION", "HEADER") && objJsonReturn.getHeaderKey("EXPIRE_SESSION") == true)
@@ -209,17 +209,17 @@ $.extend({	/**
                         else{$.showDocProgressBar(false);}
                     }
 
-                    objJsonReturn.setHeaderKey("ERROR_FLAG",true);
+                    objJsonReturn.HeaderKey={"ERROR_FLAG":true};
                     if(typeof(e) === "object"){
-                        objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                        if(G_SVR_SVC_MODE === "DEV"){
-                            objJsonReturn.setHeaderKey("ERROR_MSG", $.toJSON(e));
-                        }
+                        objJsonReturn.HeaderKey={"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                        // if(G_SVR_SVC_MODE === "DEV"){
+                            objJsonReturn.HeaderKey={"ERROR_MSG": $.toJSON(e)};
+                        // }
                     }else{
-                        objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                        if(G_SVR_SVC_MODE === "DEV"){
-                            objJsonReturn.setHeaderKey("ERROR_MSG", e);
-                        }
+                        objJsonReturn.HeaderKey={"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                        // if(G_SVR_SVC_MODE === "DEV"){
+                            objJsonReturn.HeaderKey ={"ERROR_MSG": e};
+                        // }
                     }
                     if(blnAsync === true){
                         try{eval(strCallBackFunc + "(objJsonReturn);");}catch(E){console.log("error=", E);}
@@ -227,6 +227,7 @@ $.extend({	/**
                 },complete:function(){
                 }
             });
+        try{
         } catch(e){
 
             // if(gintRequestCnt > 0){gintRequestCnt--;}
@@ -237,20 +238,19 @@ $.extend({	/**
                 else{$.showDocProgressBar(false);}
             }
 
-            objJsonReturn.setHeaderKey("ERROR_FLAG", true);
+            objJsonReturn.HeaderKey ={"ERROR_FLAG": true};
 
             if(typeof(e) === "object"){
-                objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                if(G_SVR_SVC_MODE === "DEV"){
+                objJsonReturn.HeaderKey = {"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                // if(G_SVR_SVC_MODE === "DEV"){
                     //objJsonReturn.setHeaderKey("ERROR_MSG", $.toJSON(e));GS 인증관련 제거
-                    objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                }
+                    objJsonReturn.HeaderKey={"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                // }
             }else{
-                objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                if(G_SVR_SVC_MODE === "DEV"){
-                    //objJsonReturn.setHeaderKey("ERROR_MSG", e);GS 인증관련 제거
-                    objJsonReturn.setHeaderKey("ERROR_MSG", TWB_MSG.EXCEPTION_01);
-                }
+                objJsonReturn.HeaderKey= {"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                // if(G_SVR_SVC_MODE === "DEV"){
+                    objJsonReturn.HeaderKey={"ERROR_MSG": TWB_MSG.EXCEPTION_01};
+                // }
             }
 
             //콜백함수 호출

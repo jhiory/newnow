@@ -6,6 +6,8 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="_csrf" th:content="${_csrf?.token}" />
+    <meta name="_csrf_header" th:content="${_csrf?.headerName}" />
     <title>여기가 페이지이름</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
@@ -23,6 +25,7 @@
     <link rel="stylesheet" href="common/css/style.css" type="text/css">
 
     <script src="common/js/jquery-3.3.1.min.js"></script>
+    <script src="common/js/jquery.js"></script>
     <script th:src="@{/common/js/weCommon.js}"></script>
     <script th:src="@{/common/js/Json.js}"></script>
     <script th:src="@{/common/js/dhtmlx_min.js}"></script>
