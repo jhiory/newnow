@@ -101,12 +101,12 @@ $.extend({	/**
             // var arrayDataInfo = $.getKeyListDataList(objParams);
             // objParams.setHeaderKey("MD_KEY_LIST", arrayDataInfo[0]);
             // objParams.setHeaderKey("MD_DATA_LIST", Hash.encryptMD5(arrayDataInfo[1]));
-
+            console.log("objParams",objParams)
             $.ajax({
                 type:"POST",
 				contentType: "application/json",
                 url: objParams.URL,
-                data: objParams,
+                data: JSON.stringify(objParams),
                 dataType:"json",
                 async: blnAsync,
                 beforeSend :function(xhr){

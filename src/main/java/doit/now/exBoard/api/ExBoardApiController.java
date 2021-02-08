@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController("ExBoardApiController")
+//@RestController("ExBoardApiController")
 @Api(value = "ExBoardApiController", description = "테스트 컨트롤러")
 public class ExBoardApiController {
     @Autowired
