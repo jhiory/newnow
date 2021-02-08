@@ -104,7 +104,7 @@ $.extend({	/**
 
             $.ajax({
                 type:"POST",
-//				contentType: "application/json",
+				contentType: "application/json",
                 url: objParams.URL,
                 data: objParams,
                 dataType:"json",
