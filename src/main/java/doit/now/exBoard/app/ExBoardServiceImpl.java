@@ -22,9 +22,16 @@ public class ExBoardServiceImpl implements ExBoardService{
         Map<String, Object> resultBody = new HashMap<String, Object>();
 
         //페이징
-        int intPagesCnt = (int) body.get("PAGES_CNT");
-        int intRowCnt = (int) body.get("ROW_CNT");
-        int intStartRow = (intRowCnt * intPagesCnt) - intRowCnt;
+        int intPagesCnt = 0 ;
+        int intRowCnt = 0 ;
+        int intStartRow = 0;
+        if(null != body.get("PAGES_CNT")){
+            intPagesCnt = (int) body.get("PAGES_CNT");
+        }
+        if(null != body.get("PAGES_CNT")){
+            intRowCnt = (int) body.get("ROW_CNT");
+        }
+         intStartRow = (intRowCnt * intPagesCnt) - intRowCnt;
 
         if (intPagesCnt != 0)
         {
@@ -36,15 +43,15 @@ public class ExBoardServiceImpl implements ExBoardService{
         }
         if (intRowCnt != 0)
         {
-            body.put("PAGES_CNT", new Integer(intPagesCnt));
-            body.put("ROW_CNT", new Integer(intRowCnt));
-            body.put("START_ROW", new Integer(intStartRow));
+            body.put("PAGES_CNT", intPagesCnt);
+            body.put("ROW_CNT",  intRowCnt);
+            body.put("START_ROW",  intStartRow);
         }
         else
         {
-            body.put("START_ROW", new Integer(0));		// 값이 없는 경우 초기화값을 넘김.
-            body.put("PAGES_CNT", new Integer(intPagesCnt));
-            body.put("ROW_CNT", new Integer(intRowCnt));
+            body.put("START_ROW",  0);		// 값이 없는 경우 초기화값을 넘김.
+            body.put("PAGES_CNT",  intPagesCnt);
+            body.put("ROW_CNT",  intRowCnt);
         }
         List<Map<String, Object>> list = exBoardMapper.selectList(body);
         resultBody.put("result",list);

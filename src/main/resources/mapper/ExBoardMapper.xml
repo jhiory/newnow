@@ -19,8 +19,11 @@
     <!-- 리스트 -->
     <select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         <include refid="pre-paging-sql" />
+        SELECT A.* ,
+        ROW_NUMBER() OVER(ORDER BY A.num DESC) AS ROW_NUMBER
+        FROM
+        (
         select
-            ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
             num,
             name,
             title,
@@ -28,7 +31,8 @@
             pwd,
             date
         from
-            board;
+            board
+        ) A
         <include refid="post-paging-sql" />
     </select>
 </mapper>
