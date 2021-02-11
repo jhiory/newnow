@@ -129,6 +129,7 @@ $.extend({	/**
                     }
 
                     if(obj !=  null){
+                        obj.HEADER ={};
                         if(typeof(obj.HEADER.COUNT) === "undefined"){obj.HEADER.COUNT = 0;}
                         if(typeof(obj.HEADER.TOT_COUNT) === "undefined"){obj.HEADER.TOT_COUNT = 0;}
 
@@ -155,13 +156,13 @@ $.extend({	/**
 
                     //그리드가 세팅되어있으면 요청정보를 그리드 오브젝트에 세팅해준다.
                     //추후 페이징이나 스크롤append 처리 시 동일한 요청정보로 재사용하기 위해.
-                    if(blnIsGrid === true){$("#" + strGridId).setReqData(objParams);}
+                    // if(blnIsGrid === true){$("#" + strGridId).setReqData(objParams);}
 
-                    if(blnAsync === true){
-                        try{eval(strCallBackFunc + "(objJsonReturn);");}catch(E){console.log("error=", E);}
-                    }else if(blnIsGrid === true){
-                        $("#" + strGridId).loadGridData(objJsonReturn);
-                    }
+                    // if(blnAsync === true){
+                    //     try{eval(strCallBackFunc + "(objJsonReturn);");}catch(E){console.log("error=", E);}
+                    // }else if(blnIsGrid === true){
+                    //     $("#" + strGridId).loadGridData(objJsonReturn);
+                    // }
                     objParams		= null;
                     obj				= null;
                     strSqlNameSpace = null;

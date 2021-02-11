@@ -11,19 +11,16 @@
     <sql id="post-paging-sql">
        <![CDATA[
         ) PAGING
-	        )
-	  WHERE ROW_NUMBER <= (TO_NUMBER(#{ROW_CNT}) * TO_NUMBER(#{PAGES_CNT}))
-        AND ROW_NUMBER >= ((((TO_NUMBER(#{PAGES_CNT}) - 1) * TO_NUMBER(#{ROW_CNT}) + 1)))
+	        )cc
+	  WHERE ROW_NUMBER <= (#{ROW_CNT}::INTEGER * #{PAGES_CNT}::INTEGER)
+        AND ROW_NUMBER >= ((((#{PAGES_CNT}::INTEGER - 1) * #{ROW_CNT}::INTEGER + 1)))
         ]]>
 	</sql>
     <!-- 리스트 -->
     <select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         <include refid="pre-paging-sql" />
-        SELECT A.* ,
-        ROW_NUMBER() OVER(ORDER BY A.num DESC) AS ROW_NUMBER
-        FROM
-        (
         select
+            ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
             num,
             name,
             title,
@@ -32,7 +29,6 @@
             date
         from
             board
-        ) A
         <include refid="post-paging-sql" />
     </select>
 </mapper>
