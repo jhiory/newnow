@@ -76,13 +76,13 @@ var exBorad = {
 //		LOAD_DATA: 초기데이터 로드를 위한 함수 정의 [기본함수명:initData + (구분단어)]
 //		-------------------------------------------------------------------------------
     initData:function(){
-        exBorad.SendSave();
+        exBorad.getList();
 
     },
     //
-    SendSave:function () {
-    console.log(1212);
-    // return;
+    getList:function () {
+        console.log(1212);
+        // return;
 
         //파라메터정의
         var objJsonParams = {};
@@ -95,7 +95,37 @@ var exBorad = {
 
         console.log("objJsonReturn : ",objJsonReturn);
         // 그리드 그리는 함수 호출
-       exBorad.makeGrid(objJsonReturn.JsonObj.result);
+        exBorad.makeGrid(objJsonReturn.JsonObj.result);
+        //결과값 반환
+        // if(!objJsonReturn.getErrorFlag()){
+        //     console.log("objJsonReturn: {}",objJsonReturn);
+        //
+        // } else {
+        //     TwbMsg(objJsonReturn.getMsg(), "E");
+        // }
+
+        objJsonParams = null;	//전송파라메터소멸
+        objJsonReturn = null;	//반환파라메터소멸
+    },
+    SendSave:function () {
+    console.log(1212);
+    // return;
+
+        //파라메터정의
+        var objJsonParams = {};
+        objJsonParams.Service= "insertBoard";
+        objJsonParams.name= $("#name").val();
+        objJsonParams.title= $("#tit").val();
+        objJsonParams.content= $("#content").val();
+
+        console.log("selectRtn : ",objJsonParams);
+
+        //서비스 호출
+        var objJsonReturn = $.callService(objJsonParams);
+
+        console.log("objJsonReturn : ",objJsonReturn);
+        // 그리드 그리는 함수 호출
+       exBorad.getList();
         //결과값 반환
         // if(!objJsonReturn.getErrorFlag()){
         //     console.log("objJsonReturn: {}",objJsonReturn);
@@ -116,7 +146,7 @@ var exBorad = {
                 const element = data[i];
                 imgList = "<tr>"
                     + "<td>"+element.num+"</td>"
-                    + "<td>"+element.title+"</td>"
+                    + "<td><a href='#'>"+element.title+"</a></td>"
                     + "<td>"+element.name+"</td>"
                     + "<td>"+element.date+"</td>"
                     + "</tr>"

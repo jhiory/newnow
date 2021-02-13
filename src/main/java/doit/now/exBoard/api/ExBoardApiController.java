@@ -35,4 +35,12 @@ public class ExBoardApiController {
         resultBody =  exBoardService.getBoardList(body);
             return ResponseEntity.ok(resultBody);
         }
+    @ApiOperation(value = "데이터 등록", notes = "마스터 데이터 등록")
+    @Transactional(value = "transactionManager")
+    @PostMapping("/api/insertBoard")
+    public ResponseEntity<?> insertBoard(@RequestBody HashMap<String, Object> body) throws Exception {
+        Map<String, Object> resultBody = new HashMap<String, Object>();
+        resultBody =  exBoardService.insertBoard(body);
+        return ResponseEntity.ok(resultBody);
+        }
     }

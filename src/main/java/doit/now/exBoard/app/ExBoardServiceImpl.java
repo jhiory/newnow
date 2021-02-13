@@ -58,4 +58,12 @@ public class ExBoardServiceImpl implements ExBoardService{
         resultBody.put("result",list);
         return resultBody;
     }
+
+    @Override
+    public Map<String, Object> insertBoard(HashMap<String, Object> body) {
+        Map<String, Object> resultBody = new HashMap<String, Object>();
+        int result = exBoardMapper.insertBoard(body);
+        resultBody.put("result",result);
+        return resultBody;
+    }
 }

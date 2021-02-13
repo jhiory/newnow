@@ -31,4 +31,15 @@
             board
         <include refid="post-paging-sql" />
     </select>
+    <insert id="insertBoard"  parameterType= "java.util.HashMap">
+        INSERT INTO public.board
+            (num, "name", title, "content", pwd, "date")
+        VALUES(
+                (SELECT COALESCE(MAX(num)+1,1) from board ),
+                #{name},
+                #{title},
+                #{content},
+                #{pwd},
+               TO_CHAR(now() , 'YYYYMMDD')   );
+    </insert>
 </mapper>

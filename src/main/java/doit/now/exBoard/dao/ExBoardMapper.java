@@ -9,4 +9,6 @@ import java.util.Map;
 @Mapper
 public interface ExBoardMapper {
     List<Map<String, Object>> selectList(HashMap<String, Object> body);
+
+    int insertBoard(HashMap<String, Object> body);
 }
