@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="ExBoardController", description="회원등급/포인트안내")
+@Api(value="MmbLvlController", description="회원등급/포인트안내")
 public class MmbLvlController
 {
 

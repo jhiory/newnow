@@ -11,7 +11,7 @@
     <!--    필요힌 css, script 추가영역 -->
     <link rel="stylesheet" href="common/css/richtext.min.css" type="text/css">
     <link rel="stylesheet" href="common/css/image-uploader.min.css" type="text/css">
-    <script src="exBoard/exBoard.js"></script>
+    <script src="exBoard/mmbLvl.js"></script>
 </head>
 
 <div layout:fragment="content">
@@ -24,10 +24,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="property-submit-form">
-                        <form action="#">
+                        <form action="#"  onSubmit="return false;">
                             <div class="pf-title">
                                 <h4>Title</h4>
-                                <input type="text" placeholder="Your Title*">
+                                <input type="text" placeholder="Your Title*" id="tit">
+                            </div>
+                            <div class="pf-title">
+                                <h4>Title</h4>
+                                <input type="text" placeholder="Your name" id="name">
                             </div>
                             <div class="pf-summernote">
                                 <h4>Content</h4>
@@ -39,7 +43,7 @@
                                         <a class="nav-link texteditor-switch active" data-toggle="tab" href="#tabs-2" role="tab">Visual</a>
                                     </li>
                                 </ul>
-                                <textarea class="texteditor-content" name="example"></textarea>
+                                <textarea class="texteditor-content" id="con"></textarea>
                                 <button type="submit" class="site-btn" id="btnSave">저장하기</button>
 
                             </div>
