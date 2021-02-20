@@ -27,7 +27,7 @@ public class MmbLvlApiController {
 
     @ApiOperation(value = "데이터 조회", notes = "마스터 데이터 조회")
     @Transactional(value = "transactionManager",readOnly = true)
-    @PostMapping("/api/MmbLvl/getBoardList")
+    @PostMapping("/api/mmbLvl/getBoardList")
     public ResponseEntity<?> getBoardList(@RequestBody HashMap<String, Object> body) throws Exception {
         Map<String, Object> resultBody = new HashMap<String, Object>();
         resultBody =  mmbLvlService.getBoardList(body);
@@ -35,7 +35,7 @@ public class MmbLvlApiController {
         }
     @ApiOperation(value = "데이터 등록", notes = "마스터 데이터 등록")
     @Transactional(value = "transactionManager")
-    @PostMapping("/api/MmbLvl/insertBoard")
+    @PostMapping("/api/mmbLvl/insertBoard")
     public ResponseEntity<?> insertBoard(@RequestBody HashMap<String, Object> body) throws Exception {
         Map<String, Object> resultBody = new HashMap<String, Object>();
         resultBody =  mmbLvlService.insertBoard(body);

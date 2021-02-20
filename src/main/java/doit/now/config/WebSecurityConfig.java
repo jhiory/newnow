@@ -21,6 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login"); // 이곳이 추가 되었다.
+               // http.csrf().disable();
     }
 
     //...
