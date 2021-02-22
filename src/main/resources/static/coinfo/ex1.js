@@ -7,8 +7,8 @@ var objGridData = null;
  * Document Ready : jquery에서 제공하는 함수를 이용하여 화면이 로드될 때 처리할 함수를 정의한다.
  ********************************************************************************/
 function domReady(){
-    mmbLvl.initPage();	//페이지 초기화 처리
-    mmbLvl.defineEvent();	//이벤트 정의
+    ex1.initPage();	//페이지 초기화 처리
+    ex1.defineEvent();	//이벤트 정의
     console.log(12124);
 };
 $(window).on("beforeunload",function(){
@@ -20,7 +20,7 @@ $(window).on("beforeunload",function(){
  * 스크립트를 클래스 기반의 구조체로 정의하기 위해 해당 JavaScript의 클래스명은 파일명으로 정의한다.
  * @classDescription :
  */
-var mmbLvl = {
+var ex1 = {
     /********************************************************************************
      * InitPage Function : 화면이 초기 로드 시점에 처리할 사항을 정의한다.
      ********************************************************************************/
@@ -45,9 +45,9 @@ var mmbLvl = {
         //$("#tit").keyup(alert("121212"));	//신규등록
 
         $("#btnSave").click(function(e){
-            mmbLvl.SendSave();
+            ex1.SendSave();
         });	//신규등록
-        $("#selectRtn").click(function(e){mmbLvl.selectRtn1();});	//조회버튼
+        $("#selectRtn").click(function(e){ex1.selectRtn1();});	//조회버튼
 
     },
     //		-------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ var mmbLvl = {
 //		LOAD_DATA: 초기데이터 로드를 위한 함수 정의 [기본함수명:initData + (구분단어)]
 //		-------------------------------------------------------------------------------
     initData:function(){
-        mmbLvl.getList();
+        ex1.getList();
 
     },
     //
@@ -88,7 +88,7 @@ var mmbLvl = {
 
         //파라메터정의
         var objJsonParams = {};
-        objJsonParams.Service= "mmbLvl/getBoardList";
+        objJsonParams.Service= "ex1/getBoardList";
 
         console.log("selectRtn : ",objJsonParams);
 
@@ -97,7 +97,7 @@ var mmbLvl = {
 
         console.log("objJsonReturn : ",objJsonReturn);
         // 그리드 그리는 함수 호출
-        mmbLvl.makeGrid(objJsonReturn.JsonObj.result);
+        ex1.makeGrid(objJsonReturn.JsonObj.result);
         //결과값 반환
         // if(!objJsonReturn.getErrorFlag()){
         //     console.log("objJsonReturn: {}",objJsonReturn);
@@ -115,7 +115,7 @@ var mmbLvl = {
 
         //파라메터정의
         var objJsonParams = {};
-        objJsonParams.Service= "mmbLvl/insertBoard";
+        objJsonParams.Service= "ex1/insertBoard";
         objJsonParams.name= $("#name").val();
         objJsonParams.title= $("#tit").val();
         objJsonParams.content= $("#con").val();
@@ -133,7 +133,7 @@ var mmbLvl = {
        $("#content").val('');
 
         // 그리드 그리는 함수 호출
-        mmbLvl.getList();
+        ex1.getList();
         //결과값 반환
         // if(!objJsonReturn.getErrorFlag()){
         //     console.log("objJsonReturn: {}",objJsonReturn);
@@ -153,8 +153,8 @@ var mmbLvl = {
             for (var i = 0; i < data.length; i++) {
                 const element = data[i];
                 imgList = "<tr>"
-                    + "<td>"+element.num+"</td>"
-                    + "<td><a href='#'>"+element.title+"</a></td>"
+                    + "<td>"+element.no+"</td>"
+                    + "<td><a href='#'>"+element.tit+"</a></td>"
                     + "<td>"+element.name+"</td>"
                     + "<td>"+element.date+"</td>"
                     + "</tr>"

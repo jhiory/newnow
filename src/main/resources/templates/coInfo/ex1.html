@@ -11,7 +11,7 @@
     <!--    필요힌 css, script 추가영역 -->
     <link rel="stylesheet" href="common/css/richtext.min.css" type="text/css">
     <link rel="stylesheet" href="common/css/image-uploader.min.css" type="text/css">
-    <script src="exBoard/exBoard.js"></script>
+    <script src="coinfo/ex1.js"></script>
 </head>
 
 <div layout:fragment="content">
@@ -23,11 +23,41 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="pc-table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="type">no</th>
+                                <th class="type">제목</th>
+                                <th class="type">이름</th>
+                                <th class="type">날짜</th>
+                                <!--                                <th class="compare-item middle-item">-->
+                                <!--                                    <div class="title">Villa</div>-->
+                                <!--                                    <img src="img/property/comparison/comparison-1.jpg" alt="">-->
+                                <!--                                    <div>Unimont Aurum</div>-->
+                                <!--                                    <p><span class="icon_pin_alt"></span> Badlapur East, Beyond Thane</p>-->
+                                <!--                                </th>-->
+                            </tr>
+                            </thead>
+                            <tbody id="exbo">
+                            <!--                            <tr>-->
+                            <!--                                <td class="p-type">Status</td>-->
+                            <!--                                <td>Rent</td>-->
+                            <!--                                <td>Rent</td>-->
+                            <!--                            </tr>-->
+
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="property-submit-form">
                         <form action="#">
                             <div class="pf-title">
                                 <h4>Title</h4>
-                                <input type="text" placeholder="Your Title*">
+                                <input type="text" placeholder="Your Title*" id="tit">
+                            </div>
+                            <div class="pf-title">
+                                <h4>글쓴이</h4>
+                                <input type="text" placeholder="Your mame*" id="name">
                             </div>
                             <div class="pf-summernote">
                                 <h4>Content</h4>
@@ -39,7 +69,7 @@
                                         <a class="nav-link texteditor-switch active" data-toggle="tab" href="#tabs-2" role="tab">Visual</a>
                                     </li>
                                 </ul>
-                                <textarea class="texteditor-content" name="example"></textarea>
+                                <textarea class="texteditor-content" name="example" id="con"></textarea>
                                 <button type="submit" class="site-btn" id="btnSave">저장하기</button>
 
                             </div>
