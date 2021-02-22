@@ -1,7 +1,6 @@
 package doit.now.event.app;
 
 import doit.now.event.dao.OpGdEvnMapper;
-import doit.now.exBoard.dao.ExBoardMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @Service("OpGdEvnService")
-public class OpGdEvnServicelmpl implements OpGdEvnService{
+public class OpGdEvnServiceImpl implements OpGdEvnService{
     @Autowired
-    OpGdEvnMapper OpGdEvnMapper;
+    OpGdEvnMapper opGdEvnMapper;
     @Override
     public Map<String, Object> getBoardList(HashMap<String, Object> body)throws Exception {
         Map<String, Object> resultBody = new HashMap<String, Object>();
@@ -54,7 +53,7 @@ public class OpGdEvnServicelmpl implements OpGdEvnService{
             body.put("ROW_CNT",  intRowCnt);
         }
 
-        List<Map<String, Object>> list = OpGdEvnMapper.selectList(body);
+        List<Map<String, Object>> list = opGdEvnMapper.selectList(body);
         resultBody.put("result",list);
         return resultBody;
     }
@@ -62,7 +61,7 @@ public class OpGdEvnServicelmpl implements OpGdEvnService{
     @Override
     public Map<String, Object> insertBoard(HashMap<String, Object> body) {
         Map<String, Object> resultBody = new HashMap<String, Object>();
-        int result = OpGdEvnMapper.insertBoard(body);
+        int result = opGdEvnMapper.insertBoard(body);
         resultBody.put("result",result);
         return resultBody;
     }

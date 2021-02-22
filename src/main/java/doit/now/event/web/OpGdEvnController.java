@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="이벤트", description="오피가이드 이벤트")
+@Api(value="OpGdEvnController", description="오피가이드 이벤트")
 public class OpGdEvnController
 {
 

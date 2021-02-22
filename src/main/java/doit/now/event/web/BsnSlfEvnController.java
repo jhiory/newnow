@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@Api(value="이벤트", description="업체 셀프 이벤트")
+@Api(value="BsnSlfEvnController", description="업체 셀프 이벤트")
 public class BsnSlfEvnController
 {
 
