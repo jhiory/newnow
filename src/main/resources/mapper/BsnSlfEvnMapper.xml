@@ -32,10 +32,10 @@
         <include refid="post-paging-sql" />
     </select>
     <insert id="insertBoard"  parameterType= "java.util.HashMap">
-        INSERT INTO public.board
+        INSERT INTO public.bsnslfevn
             (num, "name", title, "content", "date")
         VALUES(
-                (SELECT COALESCE(MAX(num)+1,1) from board ),
+                (SELECT COALESCE(MAX(num)+1,1) from bsnslfevn ),
                 #{name},
                 #{title},
                 #{content},
