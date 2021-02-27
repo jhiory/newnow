@@ -42,5 +42,5 @@ public class BsnSlfEvnApiController {
         resultBody =  bsnSlfEvnService.insertBoard(body);
         return ResponseEntity.ok(resultBody);
     }
-
+//fdsafsdakjfkldajsklfjdasklfda
 }
