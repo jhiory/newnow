@@ -20,18 +20,25 @@
     <select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         <include refid="pre-paging-sql" />
         select
-            ROW_NUMBER() OVER(ORDER BY num_b DESC) AS ROW_NUMBER,
-            num_b,
-            name_b,
-            title_b,
-            content_b,
-            pwd_b,
-            date_b
+            ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
+            icon,
+            level,
+            right,
+            joinday,
+            review,
+            bulletin,
+            comments,
+            levelup,
+            num 
+
         from
-            board_b
+            mmblvl
         <include refid="post-paging-sql" />
     </select>
-    <insert id="insertBoard"  parameterType= "java.util.HashMap">
+
+        <!-- 진석 주석문-->
+
+    <!-- <insert id="insertBoard"  parameterType= "java.util.HashMap">
         INSERT INTO public.board_b
             (num_b, "name_b", title_b, "content_b", pwd_b, "date_b")
         VALUES(
@@ -41,5 +48,5 @@
                 #{content},
                 #{pwd},
                TO_CHAR(now() , 'YYYYMMDD')   );
-    </insert>
+    </insert> -->
 </mapper>

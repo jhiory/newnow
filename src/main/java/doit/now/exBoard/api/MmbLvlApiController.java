@@ -33,12 +33,17 @@ public class MmbLvlApiController {
         resultBody =  mmbLvlService.getBoardList(body);
             return ResponseEntity.ok(resultBody);
         }
-    @ApiOperation(value = "데이터 등록", notes = "마스터 데이터 등록")
-    @Transactional(value = "transactionManager")
-    @PostMapping("/api/mmbLvl/insertBoard")
-    public ResponseEntity<?> insertBoard(@RequestBody HashMap<String, Object> body) throws Exception {
-        Map<String, Object> resultBody = new HashMap<String, Object>();
-        resultBody =  mmbLvlService.insertBoard(body);
-        return ResponseEntity.ok(resultBody);
-        }
+
+        // 진석 주석
+        
+    // @ApiOperation(value = "데이터 등록", notes = "마스터 데이터 등록")
+    // @Transactional(value = "transactionManager")
+    // @PostMapping("/api/mmbLvl/insertBoard")
+    // public ResponseEntity<?> insertBoard(@RequestBody HashMap<String, Object> body) throws Exception {
+    //     Map<String, Object> resultBody = new HashMap<String, Object>();
+    //     resultBody =  mmbLvlService.insertBoard(body);
+    //     return ResponseEntity.ok(resultBody);
+    //     }
+
+
     }

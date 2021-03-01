@@ -109,11 +109,14 @@ var mmbLvl = {
         objJsonParams = null;	//전송파라메터소멸
         objJsonReturn = null;	//반환파라메터소멸
     },
+
+    // 진석 주석문
+
     SendSave:function () {
     console.log(1212);
     // return;
 
-        //파라메터정의
+    //     //파라메터정의
         var objJsonParams = {};
         objJsonParams.Service= "mmbLvl/insertBoard";
         objJsonParams.name= $("#name").val();
@@ -122,7 +125,7 @@ var mmbLvl = {
 
         console.log("selectRtn : ",objJsonParams);
 
-        //서비스 호출
+    //     //서비스 호출
         var objJsonReturn = $.callService(objJsonParams);
 
         console.log("objJsonReturn : ",objJsonReturn);
@@ -132,19 +135,21 @@ var mmbLvl = {
        $("#tit").val('');
        $("#content").val('');
 
-        // 그리드 그리는 함수 호출
+    //     // 그리드 그리는 함수 호출
         mmbLvl.getList();
-        //결과값 반환
-        // if(!objJsonReturn.getErrorFlag()){
-        //     console.log("objJsonReturn: {}",objJsonReturn);
-        //
-        // } else {
-        //     TwbMsg(objJsonReturn.getMsg(), "E");
-        // }
+    //     //결과값 반환
+    //     // if(!objJsonReturn.getErrorFlag()){
+    //     //     console.log("objJsonReturn: {}",objJsonReturn);
+    //     //
+    //     // } else {
+    //     //     TwbMsg(objJsonReturn.getMsg(), "E");
+    //     // }
 
         objJsonParams = null;	//전송파라메터소멸
         objJsonReturn = null;	//반환파라메터소멸
-    },
+     },
+
+
     makeGrid:function (data) {
         if(data.length > 0){
             $("#exbo *").remove();
@@ -152,12 +157,20 @@ var mmbLvl = {
             var imgList="";
             for (var i = 0; i < data.length; i++) {
                 const element = data[i];
+
                 imgList = "<tr>"
-                    + "<td>"+element.num_b+"</td>"
-                    + "<td><a href='#'>"+element.title_b+"</a></td>"
-                    + "<td>"+element.name_b+"</td>"
-                    + "<td>"+element.date_b+"</td>"
+                    + "<td>"+element.icon +"</td>"
+                    + "<td>"+element.level+"</td>"
+                    + "<td>"+element.right+"</td>"
+                    + "<td>"+element.joinday +"</td>"
+                    + "<td>"+element.point +"</td>"
+                    + "<td>"+element.review +"</td>"
+                    + "<td>"+element.bulletin +"</td>"
+                    + "<td>"+element.comments+"</td>"
+                    + "<td>"+element.levelup +"</td>"
+                    + "<td>"+element.num+"</td>"
                     + "</tr>"
+
                 $("#exbo").append(imgList)
 
             }

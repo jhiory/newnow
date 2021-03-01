@@ -10,5 +10,7 @@ import java.util.Map;
 public interface MmbLvlMapper {
     List<Map<String, Object>> selectList(HashMap<String, Object> body);
 
-    int insertBoard(HashMap<String, Object> body);
+
+        // 진석 주석
+    // int insertBoard(HashMap<String, Object> body);
 }
