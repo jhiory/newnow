@@ -23,7 +23,7 @@
             ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
             icon,
             level,
-            right,
+            auth,
             joinday,
             review,
             bulletin,
