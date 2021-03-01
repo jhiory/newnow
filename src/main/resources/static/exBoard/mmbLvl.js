@@ -153,10 +153,10 @@ var mmbLvl = {
             for (var i = 0; i < data.length; i++) {
                 const element = data[i];
                 imgList = "<tr>"
-                    + "<td>"+element.num+"</td>"
-                    + "<td><a href='#'>"+element.title+"</a></td>"
-                    + "<td>"+element.name+"</td>"
-                    + "<td>"+element.date+"</td>"
+                    + "<td>"+element.num_b+"</td>"
+                    + "<td><a href='#'>"+element.title_b+"</a></td>"
+                    + "<td>"+element.name_b+"</td>"
+                    + "<td>"+element.date_b+"</td>"
                     + "</tr>"
                 $("#exbo").append(imgList)
 
