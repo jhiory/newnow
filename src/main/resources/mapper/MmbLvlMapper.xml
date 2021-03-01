@@ -18,22 +18,21 @@
 	</sql>
     <!-- 리스트 -->
     <select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-        <include refid="pre-paging-sql" />
+
         select
-            ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
             icon,
             level,
             auth,
             joinday,
+            point,
             review,
             bulletin,
             comments,
-            levelup,
-            num 
+            levelup
 
         from
             rtgpts
-        <include refid="post-paging-sql" />
+
     </select>
 
         <!-- 진석 주석문-->

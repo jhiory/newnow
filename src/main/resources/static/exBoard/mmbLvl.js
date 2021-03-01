@@ -161,14 +161,14 @@ var mmbLvl = {
                 imgList = "<tr>"
                     + "<td>"+element.icon +"</td>"
                     + "<td>"+element.level+"</td>"
-                    + "<td>"+element.right+"</td>"
+                    + "<td>"+element.auth+"</td>"
                     + "<td>"+element.joinday +"</td>"
                     + "<td>"+element.point +"</td>"
                     + "<td>"+element.review +"</td>"
                     + "<td>"+element.bulletin +"</td>"
                     + "<td>"+element.comments+"</td>"
                     + "<td>"+element.levelup +"</td>"
-                    + "<td>"+element.num+"</td>"
+                
                     + "</tr>"
 
                 $("#exbo").append(imgList)
