@@ -159,10 +159,14 @@ var mmbLvl = {
                 const element = data[i];
 
                 imgList = "<tr>"
-                    + "<td>"+element.icon +"</td>"
-                    + "<td>"+element.level+"</td>"
-                    + "<td>"+element.auth+"</td>"
-                    + "<td>"+element.joinday +"</td>"
+                         + "<td>"+element.icon +"</td>"
+                         + "<td>"+element.level+"</td>"
+                    if(element.auth==undefined){
+                        imgList += "<td></td>" 
+                    }else{
+                        imgList+= "<td>"+element.auth+"</td>"
+                    }
+                imgList += "<td>"+element.joinday +"</td>"
                     + "<td>"+element.point +"</td>"
                     + "<td>"+element.review +"</td>"
                     + "<td>"+element.bulletin +"</td>"
