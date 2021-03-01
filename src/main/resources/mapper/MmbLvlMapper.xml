@@ -20,15 +20,15 @@
     <select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         <include refid="pre-paging-sql" />
         select
-            ROW_NUMBER() OVER(ORDER BY num DESC) AS ROW_NUMBER,
-            num,
-            name,
-            title,
-            content,
-            pwd,
-            date
+            ROW_NUMBER() OVER(ORDER BY num_b DESC) AS ROW_NUMBER,
+            num_b,
+            name_b,
+            title_b,
+            content_b,
+            pwd_b,
+            date_b
         from
-            board
+            board_b
         <include refid="post-paging-sql" />
     </select>
     <insert id="insertBoard"  parameterType= "java.util.HashMap">
