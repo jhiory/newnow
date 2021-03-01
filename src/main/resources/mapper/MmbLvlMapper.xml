@@ -32,7 +32,7 @@
             num 
 
         from
-            mmblvl
+            rtgpts
         <include refid="post-paging-sql" />
     </select>
 
